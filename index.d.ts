@@ -35,7 +35,7 @@ export interface Query {
   queryValue: string
 }
 export type JsDisplay = Display
-export class Display {
+export declare class Display {
   index: number
   backend: string
   edidData?: Uint8Array
@@ -52,15 +52,11 @@ export class Display {
   capabilities?: string
   constructor(index: number)
   getVcpFeature(featureCode: number): Promise<Continuous | NonContinuous | Table>
-  setVcpFeature(
-    featureCode: number,
-    valueOrOffset: number,
-    bytes?: Array<number> | undefined | null,
-  ): Promise<undefined>
+  setVcpFeature(featureCode: number, valueOrOffset: number, bytes?: Array<number> | undefined | null): Promise<void>
   updateCapabilities(): string | null
 }
 export type JsDisplayManager = DisplayManager
-export class DisplayManager {
+export declare class DisplayManager {
   constructor(queries?: Query | Array<Query> | undefined | null)
   static getByIndex(index: number): Display
   get queries(): Array<Query>
@@ -69,7 +65,7 @@ export class DisplayManager {
   collect(): Promise<Array<Display>>
   list(): Promise<Array<Display>>
 }
-export namespace VCPFeatureCode {
+export declare namespace VCPFeatureCode {
   export const enum PresetFunctions {
     CodePage = 0,
     RestoreFactoryColorDefaults = 8,
